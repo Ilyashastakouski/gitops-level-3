@@ -28,7 +28,7 @@ spec:
         region: us
         type: non-prod  
         version: staging       
-        integration: integration-gpu
+        integration: integration-non-gpu
       - env: prod-eu
         region: eu  
         type: prod  
@@ -38,6 +38,16 @@ spec:
         region: us 
         type: prod
         version: prod         
+        integration: integration-non-gpu
+      - env: integration-gpu
+        region: us 
+        type: non-production
+        version: qa         
+        integration: integration-gpu
+      - env: integration-non-gpu
+        region: us 
+        type: non-production
+        version: qa         
         integration: integration-non-gpu
   template:      
     metadata:
