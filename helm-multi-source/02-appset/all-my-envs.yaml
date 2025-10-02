@@ -13,26 +13,32 @@ spec:
         region: us  
         type: non-prod   
         version: qa     
+        integration: integration-non-gpu
       - env: staging-asia
         region: asia
         type: non-prod  
         version: staging       
+        integration: integration-non-gpu
       - env: staging-eu
         region: eu
         type: non-prod  
         version: staging       
+        integration: integration-non-gpu
       - env: staging-us
         region: us
         type: non-prod  
         version: staging       
+        integration: integration-gpu
       - env: prod-eu
         region: eu  
         type: prod  
         version: prod       
+        integration: integration-non-gpu
       - env: prod-us
         region: us 
         type: prod
         version: prod         
+        integration: integration-non-gpu
   template:      
     metadata:
       name: '{{.env}}' 
@@ -51,6 +57,7 @@ spec:
             - $values/helm-multi-source/my-values/env-type/{{.type}}-values.yaml  
             - $values/helm-multi-source/my-values/regions/{{.region}}-values.yaml                
             - $values/helm-multi-source/my-values/envs/{{.env}}-values.yaml
+            - $values/helm-multi-source/my-values/envs/{{.integration}}-values.yaml
         - repoURL: 'https://github.com/Ilyashastakouski/gitops-level-3.git'
           targetRevision: HEAD
           ref: values
